@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://shakir-digital-hub-website.vercel.app"),
 
   verification: {
-    google: <meta name="google-site-verification" content="gf-suF1ZemBTVB9FcrSuTVm800cr82KixzLEyqJ4NQ8" />,
-  },
+  google: "gf-suF1ZemBTVB9FcrSuTVm800cr82KixzLEyqJ4NQ8",
+},
 
   openGraph: {
     title: "Shakir Digital Hub",
