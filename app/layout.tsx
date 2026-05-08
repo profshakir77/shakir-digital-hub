@@ -23,14 +23,19 @@ export const metadata: Metadata = {
 
   publisher: "Shakir Digital Hub",
 
-  metadataBase: new URL("https://shakirdigitalhub.vercel.app"),
+  metadataBase: new URL("https://shakir-digital-hub-website.vercel.app"),
+
+  verification: {
+    google: <meta name="google-site-verification" content="gf-suF1ZemBTVB9FcrSuTVm800cr82KixzLEyqJ4NQ8" />,
+  },
 
   openGraph: {
     title: "Shakir Digital Hub",
+
     description:
       "Professional online IT courses and digital services worldwide.",
 
-    url: "https://shakirdigitalhub.vercel.app",
+    url: "https://shakir-digital-hub-website.vercel.app",
 
     siteName: "Shakir Digital Hub",
 
