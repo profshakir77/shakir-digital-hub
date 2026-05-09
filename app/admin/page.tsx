@@ -55,6 +55,14 @@ export default function AdminPage() {
   const [courseLoading, setCourseLoading] =
     useState(false);
 
+  const [studentSearch,
+    setStudentSearch] =
+    useState("");
+
+  const [courseSearch,
+    setCourseSearch] =
+    useState("");
+
   const [courseData, setCourseData] =
     useState({
       title: "",
@@ -135,6 +143,24 @@ export default function AdminPage() {
     };
 
   }, []);
+
+  const filteredCourses =
+    courses.filter((course) =>
+      course.title
+        .toLowerCase()
+        .includes(
+          courseSearch.toLowerCase()
+        )
+    );
+
+  const filteredStudents =
+    students.filter((student) =>
+      student.name
+        .toLowerCase()
+        .includes(
+          studentSearch.toLowerCase()
+        )
+    );
 
   const handleLogout = async () => {
 
@@ -433,13 +459,29 @@ export default function AdminPage() {
         {/* Courses */}
         <div className="mb-12">
 
-          <h2 className="text-4xl font-black gradient-text mb-10">
-            Manage Courses
-          </h2>
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-10">
+
+            <h2 className="text-4xl font-black gradient-text">
+              Manage Courses
+            </h2>
+
+            <input
+              type="text"
+              placeholder="Search courses..."
+              value={courseSearch}
+              onChange={(e) =>
+                setCourseSearch(
+                  e.target.value
+                )
+              }
+              className="bg-slate-900 border border-slate-700 rounded-2xl px-5 py-4 text-white outline-none lg:w-[350px]"
+            />
+
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            {courses.map((course) => (
+            {filteredCourses.map((course) => (
 
               <div
                 key={course.id}
@@ -504,13 +546,29 @@ export default function AdminPage() {
         {/* Students */}
         <div>
 
-          <h2 className="text-4xl font-black gradient-text mb-10">
-            Student Enrollments
-          </h2>
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-10">
+
+            <h2 className="text-4xl font-black gradient-text">
+              Student Enrollments
+            </h2>
+
+            <input
+              type="text"
+              placeholder="Search students..."
+              value={studentSearch}
+              onChange={(e) =>
+                setStudentSearch(
+                  e.target.value
+                )
+              }
+              className="bg-slate-900 border border-slate-700 rounded-2xl px-5 py-4 text-white outline-none lg:w-[350px]"
+            />
+
+          </div>
 
           <div className="grid gap-8">
 
-            {students.map((student) => (
+            {filteredStudents.map((student) => (
 
               <div
                 key={student.id}

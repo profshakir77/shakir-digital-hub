@@ -1,14 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   addDoc,
   collection,
   serverTimestamp,
+  onSnapshot,
 } from "firebase/firestore";
 
 import { db } from "../../lib/firebase";
+
+interface Course {
+  id: string;
+  title: string;
+}
 
 export default function EnrollmentForm() {
 
@@ -17,6 +23,9 @@ export default function EnrollmentForm() {
 
   const [success, setSuccess] =
     useState(false);
+
+  const [courses, setCourses] =
+    useState<Course[]>([]);
 
   const [formData, setFormData] =
     useState({
@@ -27,10 +36,40 @@ export default function EnrollmentForm() {
       message: "",
     });
 
+  /* Fetch Courses */
+  useEffect(() => {
+
+    const unsubscribe = onSnapshot(
+      collection(db, "courses"),
+      (snapshot) => {
+
+        const data: Course[] = [];
+
+        snapshot.forEach((doc) => {
+
+          const courseData =
+            doc.data();
+
+          data.push({
+            id: doc.id,
+            title:
+              courseData.title,
+          });
+        });
+
+        setCourses(data);
+      }
+    );
+
+    return () => unsubscribe();
+
+  }, []);
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement |
-      HTMLTextAreaElement
+      HTMLTextAreaElement |
+      HTMLSelectElement
     >
   ) => {
 
@@ -71,7 +110,9 @@ export default function EnrollmentForm() {
       });
 
       setTimeout(() => {
+
         setSuccess(false);
+
       }, 4000);
 
     } catch (error) {
@@ -102,6 +143,7 @@ export default function EnrollmentForm() {
 
         <div className="max-w-5xl mx-auto glass-effect rounded-[40px] p-10 md:p-16">
 
+          {/* Heading */}
           <div className="text-center mb-12">
 
             <span className="bg-blue-500/20 text-blue-400 px-5 py-2 rounded-full text-sm">
@@ -125,7 +167,7 @@ export default function EnrollmentForm() {
 
           </div>
 
-          {/* Success Message */}
+          {/* Success */}
           {success && (
 
             <div className="bg-green-500/20 border border-green-500 text-green-300 rounded-2xl p-5 mb-8 text-center font-bold">
@@ -136,6 +178,7 @@ export default function EnrollmentForm() {
 
           )}
 
+          {/* Form */}
           <form
             onSubmit={handleSubmit}
             className="grid gap-6"
@@ -177,15 +220,31 @@ export default function EnrollmentForm() {
                 className="bg-slate-900 border border-slate-700 focus:border-blue-500 transition rounded-2xl p-5 text-white outline-none"
               />
 
-              <input
-                type="text"
+              {/* Course Dropdown */}
+              <select
                 name="course"
-                placeholder="Course Name"
                 required
                 value={formData.course}
                 onChange={handleChange}
                 className="bg-slate-900 border border-slate-700 focus:border-blue-500 transition rounded-2xl p-5 text-white outline-none"
-              />
+              >
+
+                <option value="">
+                  Select Course
+                </option>
+
+                {courses.map((course) => (
+
+                  <option
+                    key={course.id}
+                    value={course.title}
+                  >
+                    {course.title}
+                  </option>
+
+                ))}
+
+              </select>
 
             </div>
 

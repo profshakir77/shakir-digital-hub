@@ -10,9 +10,16 @@ export default function Navbar() {
   const [activeSection, setActiveSection] =
     useState("home");
 
+  const [scrolled, setScrolled] =
+    useState(false);
+
   useEffect(() => {
 
     const handleScroll = () => {
+
+      setScrolled(
+        window.scrollY > 50
+      );
 
       const sections = [
         "home",
@@ -34,7 +41,7 @@ export default function Navbar() {
             window.scrollY;
 
           const offset =
-            element.offsetTop - 120;
+            element.offsetTop - 150;
 
           const height =
             element.offsetHeight;
@@ -76,7 +83,13 @@ export default function Navbar() {
       : "hover:text-blue-400 transition";
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-slate-950/70 backdrop-blur-xl border-b border-slate-800">
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition duration-300 ${
+        scrolled
+          ? "bg-slate-950/80 backdrop-blur-xl border-b border-slate-800 shadow-2xl"
+          : "bg-transparent"
+      }`}
+    >
 
       <div className="container-custom flex items-center justify-between py-5">
 
@@ -150,7 +163,7 @@ export default function Navbar() {
 
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Button */}
         <button
           onClick={() =>
             setMenuOpen(
@@ -159,7 +172,9 @@ export default function Navbar() {
           }
           className="lg:hidden text-white text-4xl"
         >
-          ☰
+          {menuOpen
+            ? "×"
+            : "☰"}
         </button>
 
       </div>
@@ -167,7 +182,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {menuOpen && (
 
-        <div className="lg:hidden bg-slate-950 border-t border-slate-800 px-6 py-8 animate-in fade-in slide-in-from-top duration-300">
+        <div className="lg:hidden bg-slate-950/95 backdrop-blur-xl border-t border-slate-800 px-6 py-8 animate-in fade-in slide-in-from-top duration-300">
 
           <nav className="flex flex-col gap-6 text-white text-lg">
 

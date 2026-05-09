@@ -1,0 +1,16 @@
+{
+  "name": "Shakir Digital Hub",
+  "short_name": "SDH",
+  "description": "Professional Online IT Courses & Digital Services",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

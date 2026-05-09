@@ -36,6 +36,10 @@ export default function DynamicCourses() {
   const [sort, setSort] =
     useState("default");
 
+  const [selectedCourse,
+    setSelectedCourse] =
+    useState<Course | null>(null);
+
   useEffect(() => {
 
     const unsubscribe = onSnapshot(
@@ -149,7 +153,6 @@ export default function DynamicCourses() {
         {/* Filters */}
         <div className="grid md:grid-cols-3 gap-6 mb-16">
 
-          {/* Search */}
           <input
             type="text"
             placeholder="Search courses..."
@@ -162,7 +165,6 @@ export default function DynamicCourses() {
             className="bg-slate-950 border border-slate-700 focus:border-blue-500 transition rounded-2xl p-5 text-white outline-none"
           />
 
-          {/* Level */}
           <select
             value={level}
             onChange={(e) =>
@@ -191,7 +193,6 @@ export default function DynamicCourses() {
 
           </select>
 
-          {/* Sort */}
           <select
             value={sort}
             onChange={(e) =>
@@ -243,7 +244,6 @@ export default function DynamicCourses() {
                   className="glass-effect hover:border-blue-500 hover:-translate-y-3 transition duration-300 rounded-[32px] overflow-hidden"
                 >
 
-                  {/* Image */}
                   <img
                     src={
                       course.image ||
@@ -255,7 +255,6 @@ export default function DynamicCourses() {
 
                   <div className="p-8">
 
-                    {/* Level */}
                     <div className="inline-block bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-sm mb-6">
 
                       {course.level ||
@@ -287,17 +286,32 @@ export default function DynamicCourses() {
 
                     </div>
 
-                    <p className="text-slate-400 leading-8 mb-8">
+                    <p className="text-slate-400 leading-8 mb-8 line-clamp-3">
                       {course.description}
                     </p>
 
-                    <a
-                      href={`https://wa.me/923059494585?text=Assalamualaikum%20I%20want%20to%20enroll%20in%20${course.title}`}
-                      target="_blank"
-                      className="inline-block bg-green-500 hover:bg-green-600 hover:scale-105 transition duration-300 px-6 py-3 rounded-xl font-bold text-white"
-                    >
-                      Enroll on WhatsApp
-                    </a>
+                    <div className="flex gap-4">
+
+                      <button
+                        onClick={() =>
+                          setSelectedCourse(
+                            course
+                          )
+                        }
+                        className="bg-blue-500 hover:bg-blue-600 transition px-5 py-3 rounded-xl font-bold"
+                      >
+                        View Details
+                      </button>
+
+                      <a
+                        href={`https://wa.me/923059494585?text=Assalamualaikum%20I%20want%20to%20enroll%20in%20${course.title}`}
+                        target="_blank"
+                        className="bg-green-500 hover:bg-green-600 transition px-5 py-3 rounded-xl font-bold"
+                      >
+                        Enroll
+                      </a>
+
+                    </div>
 
                   </div>
 
@@ -311,6 +325,96 @@ export default function DynamicCourses() {
         )}
 
       </div>
+
+      {/* Modal */}
+      {selectedCourse && (
+
+        <div className="fixed inset-0 bg-black/80 backdrop-blur flex items-center justify-center p-6 z-50">
+
+          <div className="glass-effect max-w-3xl w-full rounded-[40px] overflow-hidden relative">
+
+            {/* Close */}
+            <button
+              onClick={() =>
+                setSelectedCourse(
+                  null
+                )
+              }
+              className="absolute top-5 right-5 bg-red-500 hover:bg-red-600 w-12 h-12 rounded-full text-xl font-bold z-10"
+            >
+              ×
+            </button>
+
+            {/* Image */}
+            <img
+              src={
+                selectedCourse.image ||
+                "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop"
+              }
+              alt={selectedCourse.title}
+              className="w-full h-72 object-cover"
+            />
+
+            <div className="p-10">
+
+              <div className="inline-block bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-sm mb-6">
+
+                {selectedCourse.level ||
+                  "Beginner"}
+
+              </div>
+
+              <h2 className="text-5xl font-black gradient-text mb-8">
+                {selectedCourse.title}
+              </h2>
+
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+
+                <div className="glass-effect rounded-2xl p-6">
+
+                  <h3 className="text-xl font-bold mb-3">
+                    Duration
+                  </h3>
+
+                  <p className="text-slate-400">
+                    {selectedCourse.duration}
+                  </p>
+
+                </div>
+
+                <div className="glass-effect rounded-2xl p-6">
+
+                  <h3 className="text-xl font-bold mb-3">
+                    Price
+                  </h3>
+
+                  <p className="text-slate-400">
+                    {selectedCourse.price}
+                  </p>
+
+                </div>
+
+              </div>
+
+              <p className="text-slate-300 leading-8 mb-10">
+                {selectedCourse.description}
+              </p>
+
+              <a
+                href={`https://wa.me/923059494585?text=Assalamualaikum%20I%20want%20to%20enroll%20in%20${selectedCourse.title}`}
+                target="_blank"
+                className="inline-block bg-green-500 hover:bg-green-600 hover:scale-105 transition duration-300 px-8 py-4 rounded-2xl font-bold text-lg"
+              >
+                Enroll on WhatsApp
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      )}
 
     </section>
   );

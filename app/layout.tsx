@@ -4,8 +4,18 @@ import "./globals.css";
 
 export const metadata: Metadata = {
 
-  title:
-    "Shakir Digital Hub | Online IT Courses & Digital Services",
+  metadataBase:
+    new URL(
+      "https://shakir-digital-hub.vercel.app"
+    ),
+
+  title: {
+    default:
+      "Shakir Digital Hub | Online IT Courses & Digital Services",
+
+    template:
+      "%s | Shakir Digital Hub",
+  },
 
   description:
     "Learn website development, graphic designing, digital marketing, freelancing, Shopify, SEO, and modern digital skills online with Shakir Digital Hub.",
@@ -33,6 +43,14 @@ export const metadata: Metadata = {
   creator:
     "Shakir Digital Hub",
 
+  publisher:
+    "Shakir Digital Hub",
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
   openGraph: {
 
     title:
@@ -52,6 +70,20 @@ export const metadata: Metadata = {
 
     type:
       "website",
+
+    images: [
+      {
+        url:
+          "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
+
+        width: 1200,
+
+        height: 630,
+
+        alt:
+          "Shakir Digital Hub",
+      },
+    ],
   },
 
   twitter: {
@@ -64,6 +96,14 @@ export const metadata: Metadata = {
 
     description:
       "Professional online IT courses and digital services worldwide.",
+
+    images: [
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
+    ],
+  },
+
+  icons: {
+    icon: "/favicon.ico",
   },
 };
 
