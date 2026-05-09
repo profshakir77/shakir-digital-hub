@@ -1,14 +1,82 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
 
   const [menuOpen, setMenuOpen] =
     useState(false);
 
+  const [activeSection, setActiveSection] =
+    useState("home");
+
+  useEffect(() => {
+
+    const handleScroll = () => {
+
+      const sections = [
+        "home",
+        "courses",
+        "enroll",
+        "contact",
+      ];
+
+      sections.forEach((section) => {
+
+        const element =
+          document.getElementById(
+            section
+          );
+
+        if (element) {
+
+          const top =
+            window.scrollY;
+
+          const offset =
+            element.offsetTop - 120;
+
+          const height =
+            element.offsetHeight;
+
+          if (
+            top >= offset &&
+            top <
+              offset + height
+          ) {
+
+            setActiveSection(
+              section
+            );
+          }
+        }
+      });
+    };
+
+    window.addEventListener(
+      "scroll",
+      handleScroll
+    );
+
+    return () => {
+
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      );
+    };
+
+  }, []);
+
+  const navLinkClass = (
+    section: string
+  ) =>
+    activeSection === section
+      ? "text-blue-400 font-bold"
+      : "hover:text-blue-400 transition";
+
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800">
+    <header className="fixed top-0 left-0 w-full z-50 bg-slate-950/70 backdrop-blur-xl border-b border-slate-800">
 
       <div className="container-custom flex items-center justify-between py-5">
 
@@ -25,28 +93,42 @@ export default function Navbar() {
 
           <a
             href="#home"
-            className="hover:text-blue-400 transition"
+            className={
+              navLinkClass("home")
+            }
           >
             Home
           </a>
 
           <a
             href="#courses"
-            className="hover:text-blue-400 transition"
+            className={
+              navLinkClass(
+                "courses"
+              )
+            }
           >
             Courses
           </a>
 
           <a
             href="#enroll"
-            className="hover:text-blue-400 transition"
+            className={
+              navLinkClass(
+                "enroll"
+              )
+            }
           >
             Enroll
           </a>
 
           <a
             href="#contact"
-            className="hover:text-blue-400 transition"
+            className={
+              navLinkClass(
+                "contact"
+              )
+            }
           >
             Contact
           </a>
@@ -68,10 +150,12 @@ export default function Navbar() {
 
         </nav>
 
-        {/* Mobile Button */}
+        {/* Mobile Menu Button */}
         <button
           onClick={() =>
-            setMenuOpen(!menuOpen)
+            setMenuOpen(
+              !menuOpen
+            )
           }
           className="lg:hidden text-white text-4xl"
         >
@@ -83,7 +167,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {menuOpen && (
 
-        <div className="lg:hidden bg-slate-950 border-t border-slate-800 px-6 py-8">
+        <div className="lg:hidden bg-slate-950 border-t border-slate-800 px-6 py-8 animate-in fade-in slide-in-from-top duration-300">
 
           <nav className="flex flex-col gap-6 text-white text-lg">
 
@@ -92,7 +176,9 @@ export default function Navbar() {
               onClick={() =>
                 setMenuOpen(false)
               }
-              className="hover:text-blue-400 transition"
+              className={
+                navLinkClass("home")
+              }
             >
               Home
             </a>
@@ -102,7 +188,11 @@ export default function Navbar() {
               onClick={() =>
                 setMenuOpen(false)
               }
-              className="hover:text-blue-400 transition"
+              className={
+                navLinkClass(
+                  "courses"
+                )
+              }
             >
               Courses
             </a>
@@ -112,7 +202,11 @@ export default function Navbar() {
               onClick={() =>
                 setMenuOpen(false)
               }
-              className="hover:text-blue-400 transition"
+              className={
+                navLinkClass(
+                  "enroll"
+                )
+              }
             >
               Enroll
             </a>
@@ -122,7 +216,11 @@ export default function Navbar() {
               onClick={() =>
                 setMenuOpen(false)
               }
-              className="hover:text-blue-400 transition"
+              className={
+                navLinkClass(
+                  "contact"
+                )
+              }
             >
               Contact
             </a>
