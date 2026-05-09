@@ -2,11 +2,17 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-28 bg-black text-white"
+      className="py-28 bg-black text-white relative overflow-hidden"
     >
 
-      <div className="container-custom">
+      {/* Glow Effects */}
+      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full"></div>
 
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-500/10 blur-[120px] rounded-full"></div>
+
+      <div className="container-custom relative z-10">
+
+        {/* Heading */}
         <div className="text-center mb-20">
 
           <span className="bg-blue-500/20 text-blue-400 px-5 py-2 rounded-full text-sm">
@@ -28,11 +34,13 @@ export default function Contact() {
 
         </div>
 
+        {/* Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-          <div className="glass-effect hover:border-blue-500 transition duration-300 rounded-[32px] p-10">
+          {/* Email */}
+          <div className="glass-effect hover:border-blue-500 hover:-translate-y-3 transition duration-300 rounded-[32px] p-10">
 
-            <div className="text-6xl mb-6">
+            <div className="w-20 h-20 rounded-3xl bg-blue-500/20 flex items-center justify-center text-4xl mb-8">
               📧
             </div>
 
@@ -46,9 +54,10 @@ export default function Contact() {
 
           </div>
 
-          <div className="glass-effect hover:border-green-500 transition duration-300 rounded-[32px] p-10">
+          {/* WhatsApp */}
+          <div className="glass-effect hover:border-green-500 hover:-translate-y-3 transition duration-300 rounded-[32px] p-10">
 
-            <div className="text-6xl mb-6">
+            <div className="w-20 h-20 rounded-3xl bg-green-500/20 flex items-center justify-center text-4xl mb-8">
               📱
             </div>
 
@@ -56,23 +65,24 @@ export default function Contact() {
               Phone / WhatsApp
             </h3>
 
-            <p className="text-slate-400 leading-8">
+            <p className="text-slate-400 leading-8 mb-8">
               +92 305 9494585
             </p>
 
             <a
               href="https://wa.me/923059494585"
               target="_blank"
-              className="inline-block mt-6 bg-green-500 hover:bg-green-600 hover:scale-105 transition duration-300 px-6 py-3 rounded-xl font-bold"
+              className="inline-block bg-green-500 hover:bg-green-600 hover:scale-105 transition duration-300 px-6 py-3 rounded-xl font-bold"
             >
               Chat on WhatsApp
             </a>
 
           </div>
 
-          <div className="glass-effect hover:border-blue-500 transition duration-300 rounded-[32px] p-10">
+          {/* Facebook */}
+          <div className="glass-effect hover:border-cyan-500 hover:-translate-y-3 transition duration-300 rounded-[32px] p-10">
 
-            <div className="text-6xl mb-6">
+            <div className="w-20 h-20 rounded-3xl bg-cyan-500/20 flex items-center justify-center text-4xl mb-8">
               🌍
             </div>
 
@@ -80,7 +90,7 @@ export default function Contact() {
               Facebook Page
             </h3>
 
-            <p className="text-slate-400 leading-8 mb-6">
+            <p className="text-slate-400 leading-8 mb-8">
               Follow us for updates, online courses, freelancing tips, and digital services.
             </p>
 
@@ -93,6 +103,33 @@ export default function Contact() {
             </a>
 
           </div>
+
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="mt-20 glass-effect rounded-[40px] p-10 md:p-16 text-center">
+
+          <h3 className="text-4xl md:text-5xl font-black mb-6">
+
+            Ready To Start Your
+            <span className="block gradient-text">
+              Digital Journey?
+            </span>
+
+          </h3>
+
+          <p className="text-slate-400 text-xl leading-8 max-w-3xl mx-auto mb-10">
+
+            Join students worldwide and start learning high-income digital skills today.
+
+          </p>
+
+          <a
+            href="#enroll"
+            className="inline-block bg-blue-500 hover:bg-blue-600 hover:scale-105 transition duration-300 px-10 py-5 rounded-2xl font-bold text-xl shadow-lg shadow-blue-500/30"
+          >
+            Enroll Now
+          </a>
 
         </div>
 

@@ -2,22 +2,22 @@ export default function About() {
 
   const features = [
     "Professional IT Courses",
-
     "Live Online Training",
-
     "Freelancing Guidance",
-
     "International Learning",
-
     "Modern Digital Skills",
-
     "Real Client Projects",
   ];
 
   return (
-    <section className="py-28 bg-slate-900 text-white">
+    <section className="relative overflow-hidden py-28 bg-slate-950 text-white">
 
-      <div className="container-custom grid lg:grid-cols-2 gap-20 items-center">
+      {/* Glow Effects */}
+      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full"></div>
+
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-500/10 blur-[120px] rounded-full"></div>
+
+      <div className="container-custom grid lg:grid-cols-2 gap-20 items-center relative z-10">
 
         {/* Left Side */}
         <div>
@@ -41,6 +41,7 @@ export default function About() {
 
           </p>
 
+          {/* Features */}
           <div className="grid sm:grid-cols-2 gap-5">
 
             {features.map((item, index) => (
@@ -59,57 +60,95 @@ export default function About() {
         </div>
 
         {/* Right Side */}
-        <div className="glass-effect rounded-[40px] p-10">
+        <div className="relative">
 
-          <div className="grid grid-cols-2 gap-6">
+          {/* Main Card */}
+          <div className="glass-effect rounded-[40px] p-10">
 
-            <div className="bg-slate-900 rounded-3xl p-8 text-center hover:-translate-y-2 transition duration-300">
+            <div className="grid grid-cols-2 gap-6">
 
-              <h3 className="text-5xl font-black gradient-text mb-4">
-                500+
-              </h3>
+              <div className="bg-slate-900 rounded-3xl p-8 text-center hover:-translate-y-2 transition duration-300">
 
-              <p className="text-slate-400">
-                Students
-              </p>
+                <div className="text-5xl mb-4">
+                  🎓
+                </div>
+
+                <h3 className="text-5xl font-black gradient-text mb-4">
+                  500+
+                </h3>
+
+                <p className="text-slate-400">
+                  Students
+                </p>
+
+              </div>
+
+              <div className="bg-slate-900 rounded-3xl p-8 text-center hover:-translate-y-2 transition duration-300">
+
+                <div className="text-5xl mb-4">
+                  📚
+                </div>
+
+                <h3 className="text-5xl font-black gradient-text mb-4">
+                  20+
+                </h3>
+
+                <p className="text-slate-400">
+                  Courses
+                </p>
+
+              </div>
+
+              <div className="bg-slate-900 rounded-3xl p-8 text-center hover:-translate-y-2 transition duration-300">
+
+                <div className="text-5xl mb-4">
+                  🌍
+                </div>
+
+                <h3 className="text-5xl font-black gradient-text mb-4">
+                  10+
+                </h3>
+
+                <p className="text-slate-400">
+                  Countries
+                </p>
+
+              </div>
+
+              <div className="bg-slate-900 rounded-3xl p-8 text-center hover:-translate-y-2 transition duration-300">
+
+                <div className="text-5xl mb-4">
+                  💼
+                </div>
+
+                <h3 className="text-5xl font-black gradient-text mb-4">
+                  100+
+                </h3>
+
+                <p className="text-slate-400">
+                  Projects
+                </p>
+
+              </div>
 
             </div>
 
-            <div className="bg-slate-900 rounded-3xl p-8 text-center hover:-translate-y-2 transition duration-300">
+          </div>
 
-              <h3 className="text-5xl font-black gradient-text mb-4">
-                20+
-              </h3>
+          {/* Floating Card */}
+          <div className="hidden lg:block absolute -bottom-10 -left-10 glass-effect rounded-3xl p-6 float-animation">
 
-              <p className="text-slate-400">
-                Courses
-              </p>
-
+            <div className="text-5xl mb-4">
+              🚀
             </div>
 
-            <div className="bg-slate-900 rounded-3xl p-8 text-center hover:-translate-y-2 transition duration-300">
+            <h3 className="text-2xl font-black gradient-text mb-2">
+              Career Growth
+            </h3>
 
-              <h3 className="text-5xl font-black gradient-text mb-4">
-                10+
-              </h3>
-
-              <p className="text-slate-400">
-                Countries
-              </p>
-
-            </div>
-
-            <div className="bg-slate-900 rounded-3xl p-8 text-center hover:-translate-y-2 transition duration-300">
-
-              <h3 className="text-5xl font-black gradient-text mb-4">
-                100+
-              </h3>
-
-              <p className="text-slate-400">
-                Projects
-              </p>
-
-            </div>
+            <p className="text-slate-400">
+              Learn skills that generate income.
+            </p>
 
           </div>
 

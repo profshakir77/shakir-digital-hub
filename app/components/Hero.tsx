@@ -2,15 +2,10 @@ export default function Hero() {
 
   const services = [
     "Website Development",
-
     "Graphic Designing",
-
     "Digital Marketing",
-
     "Freelancing Training",
-
     "Shopify Development",
-
     "POS Software",
   ];
 
@@ -131,24 +126,46 @@ export default function Hero() {
         </div>
 
         {/* Right Side */}
-        <div className="glass-effect rounded-[40px] p-10 float-animation">
+        <div className="relative">
 
-          <h2 className="text-4xl font-black gradient-text mb-10">
-            Our Expertise
-          </h2>
+          {/* Main Card */}
+          <div className="glass-effect rounded-[40px] p-10 float-animation">
 
-          <div className="space-y-6">
+            <h2 className="text-4xl font-black gradient-text mb-10">
+              Our Expertise
+            </h2>
 
-            {services.map((item, index) => (
+            <div className="space-y-6">
 
-              <div
-                key={index}
-                className="bg-slate-950 border border-slate-800 hover:border-blue-500 hover:-translate-y-1 transition duration-300 rounded-2xl p-5 text-lg font-semibold"
-              >
-                ✔ {item}
-              </div>
+              {services.map((item, index) => (
 
-            ))}
+                <div
+                  key={index}
+                  className="bg-slate-950 border border-slate-800 hover:border-blue-500 hover:-translate-y-1 transition duration-300 rounded-2xl p-5 text-lg font-semibold"
+                >
+                  ✔ {item}
+                </div>
+
+              ))}
+
+            </div>
+
+          </div>
+
+          {/* Floating Card */}
+          <div className="hidden lg:block absolute -bottom-10 -left-10 glass-effect rounded-3xl p-6 float-animation">
+
+            <div className="text-5xl mb-4">
+              🚀
+            </div>
+
+            <h3 className="text-2xl font-black gradient-text mb-2">
+              Career Growth
+            </h3>
+
+            <p className="text-slate-400">
+              Learn skills that generate income.
+            </p>
 
           </div>
 
