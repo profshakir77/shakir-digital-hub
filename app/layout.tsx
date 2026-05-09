@@ -1,6 +1,6 @@
-import "./globals.css";
-
 import type { Metadata } from "next";
+
+import "./globals.css";
 
 export const metadata: Metadata = {
 
@@ -8,39 +8,30 @@ export const metadata: Metadata = {
     "Shakir Digital Hub | Online IT Courses & Digital Services",
 
   description:
-    "Shakir Digital Hub provides professional online courses in web development, graphic designing, digital marketing, freelancing, SEO, Shopify, and IT skills worldwide.",
+    "Learn website development, graphic designing, digital marketing, freelancing, Shopify, SEO, and modern digital skills online with Shakir Digital Hub.",
 
   keywords: [
-    "web development course",
-    "graphic designing",
-    "digital marketing",
-    "freelancing",
-    "SEO course",
-    "online courses Pakistan",
     "Shakir Digital Hub",
-    "Shopify course",
-    "POS software",
-    "IT institute",
+    "Online IT Courses",
+    "Website Development",
+    "Graphic Designing",
+    "Digital Marketing",
+    "Freelancing",
+    "Shopify",
+    "SEO",
+    "Online Learning",
+    "Pakistan IT Courses",
   ],
 
   authors: [
     {
-      name: "Shakir Digital Hub",
+      name:
+        "Shakir Digital Hub",
     },
   ],
 
-  creator: "Shakir Digital Hub",
-
-  publisher: "Shakir Digital Hub",
-
-  metadataBase: new URL(
-    "https://shakir-digital-hub-website.vercel.app"
-  ),
-
-  verification: {
-    google:
-      "gf-suF1ZemBTVB9FcrSuTVm800cr82KixzLEyqJ4NQ8",
-  },
+  creator:
+    "Shakir Digital Hub",
 
   openGraph: {
 
@@ -51,24 +42,16 @@ export const metadata: Metadata = {
       "Professional online IT courses and digital services worldwide.",
 
     url:
-      "https://shakir-digital-hub-website.vercel.app",
+      "https://shakir-digital-hub.vercel.app",
 
     siteName:
       "Shakir Digital Hub",
 
-    images: [
-      {
-        url: "/images/logo.png",
-        width: 1200,
-        height: 630,
-        alt:
-          "Shakir Digital Hub",
-      },
-    ],
+    locale:
+      "en_US",
 
-    locale: "en_US",
-
-    type: "website",
+    type:
+      "website",
   },
 
   twitter: {
@@ -80,16 +63,7 @@ export const metadata: Metadata = {
       "Shakir Digital Hub",
 
     description:
-      "Professional online IT courses and digital services.",
-
-    images: [
-      "/images/logo.png",
-    ],
-  },
-
-  icons: {
-    icon:
-      "/images/logo.png",
+      "Professional online IT courses and digital services worldwide.",
   },
 };
 
