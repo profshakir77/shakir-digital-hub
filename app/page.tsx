@@ -1,31 +1,55 @@
 import Navbar from "./components/Navbar";
+
 import Hero from "./components/Hero";
+
 import Stats from "./components/Stats";
-import Services from "./components/Services";
-import Courses from "./components/Courses";
+
 import About from "./components/About";
+
+import DynamicCourses from "./components/DynamicCourses";
+
 import Testimonials from "./components/Testimonials";
-import Blog from "./components/Blog";
+
+import CTA from "./components/CTA";
+
 import Faq from "./components/Faq";
+
+import EnrollmentForm from "./components/EnrollmentForm";
+
 import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+
 import Whatsapp from "./components/Whatsapp";
 
-export default function Home() {
+import Footer from "./components/Footer";
+
+export default function HomePage() {
   return (
-    <>
+    <main className="bg-slate-950 text-white overflow-hidden">
+
       <Navbar />
+
       <Hero />
+
       <Stats />
-      <Services />
-      <Courses />
+
       <About />
+
+      <DynamicCourses />
+
       <Testimonials />
-      <Blog />
+
+      <CTA />
+
       <Faq />
+
+      <EnrollmentForm />
+
       <Contact />
-      <Footer />
+
       <Whatsapp />
-    </>
+
+      <Footer />
+
+    </main>
   );
 }

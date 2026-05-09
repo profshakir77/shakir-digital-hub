@@ -1,104 +1,156 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+
+  const [menuOpen, setMenuOpen] =
+    useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur border-b border-slate-800">
-      <div className="container-custom flex justify-between items-center py-5">
+    <header className="fixed top-0 left-0 w-full z-50 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800">
+
+      <div className="container-custom flex items-center justify-between py-5">
 
         {/* Logo */}
-        <div className="flex items-center gap-4">
-          <Image
-            src="/images/logo.png"
-            alt="Shakir Digital Hub"
-            width={55}
-            height={55}
-            className="rounded-full border border-slate-700"
-          />
-
-          <div>
-            <h1 className="text-2xl md:text-3xl font-black text-blue-400">
-              SHAKIR DIGITAL HUB
-            </h1>
-
-            <p className="text-slate-400 text-sm">
-              Digital Skills Academy
-            </p>
-          </div>
-        </div>
+        <a
+          href="#home"
+          className="text-3xl font-black gradient-text"
+        >
+          Shakir Digital Hub
+        </a>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex gap-8 text-lg">
-          <a href="#home" className="hover:text-blue-400 transition">
+        <nav className="hidden lg:flex items-center gap-10 text-white">
+
+          <a
+            href="#home"
+            className="hover:text-blue-400 transition"
+          >
             Home
           </a>
 
-          <a href="#services" className="hover:text-blue-400 transition">
-            Services
-          </a>
-
-          <a href="#courses" className="hover:text-blue-400 transition">
+          <a
+            href="#courses"
+            className="hover:text-blue-400 transition"
+          >
             Courses
           </a>
 
-          <a href="#about" className="hover:text-blue-400 transition">
-            About
+          <a
+            href="#enroll"
+            className="hover:text-blue-400 transition"
+          >
+            Enroll
           </a>
 
-          <a href="#testimonials" className="hover:text-blue-400 transition">
-            Reviews
-          </a>
-
-          <a href="#contact" className="hover:text-blue-400 transition">
+          <a
+            href="#contact"
+            className="hover:text-blue-400 transition"
+          >
             Contact
           </a>
+
+          <a
+            href="/admin"
+            className="hover:text-blue-400 transition"
+          >
+            Admin
+          </a>
+
+          <a
+            href="https://wa.me/923059494585"
+            target="_blank"
+            className="bg-green-500 hover:bg-green-600 hover:scale-105 transition duration-300 px-6 py-3 rounded-xl font-bold shadow-lg shadow-green-500/30"
+          >
+            WhatsApp
+          </a>
+
         </nav>
 
         {/* Mobile Button */}
         <button
-          className="md:hidden text-3xl"
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={() =>
+            setMenuOpen(!menuOpen)
+          }
+          className="lg:hidden text-white text-4xl"
         >
           ☰
         </button>
+
       </div>
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-slate-900 border-t border-slate-800">
-          <nav className="flex flex-col p-6 gap-5 text-lg">
 
-            <a href="#home" onClick={() => setMenuOpen(false)}>
+        <div className="lg:hidden bg-slate-950 border-t border-slate-800 px-6 py-8">
+
+          <nav className="flex flex-col gap-6 text-white text-lg">
+
+            <a
+              href="#home"
+              onClick={() =>
+                setMenuOpen(false)
+              }
+              className="hover:text-blue-400 transition"
+            >
               Home
             </a>
 
-            <a href="#services" onClick={() => setMenuOpen(false)}>
-              Services
-            </a>
-
-            <a href="#courses" onClick={() => setMenuOpen(false)}>
+            <a
+              href="#courses"
+              onClick={() =>
+                setMenuOpen(false)
+              }
+              className="hover:text-blue-400 transition"
+            >
               Courses
             </a>
 
-            <a href="#about" onClick={() => setMenuOpen(false)}>
-              About
+            <a
+              href="#enroll"
+              onClick={() =>
+                setMenuOpen(false)
+              }
+              className="hover:text-blue-400 transition"
+            >
+              Enroll
             </a>
 
-            <a href="#testimonials" onClick={() => setMenuOpen(false)}>
-              Reviews
-            </a>
-
-            <a href="#contact" onClick={() => setMenuOpen(false)}>
+            <a
+              href="#contact"
+              onClick={() =>
+                setMenuOpen(false)
+              }
+              className="hover:text-blue-400 transition"
+            >
               Contact
             </a>
 
+            <a
+              href="/admin"
+              onClick={() =>
+                setMenuOpen(false)
+              }
+              className="hover:text-blue-400 transition"
+            >
+              Admin
+            </a>
+
+            <a
+              href="https://wa.me/923059494585"
+              target="_blank"
+              className="bg-green-500 hover:bg-green-600 transition px-6 py-4 rounded-xl font-bold text-center"
+            >
+              WhatsApp
+            </a>
+
           </nav>
+
         </div>
+
       )}
+
     </header>
   );
 }
