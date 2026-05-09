@@ -33,6 +33,9 @@ export default function DynamicCourses() {
   const [level, setLevel] =
     useState("All");
 
+  const [sort, setSort] =
+    useState("default");
+
   useEffect(() => {
 
     const unsubscribe = onSnapshot(
@@ -68,25 +71,45 @@ export default function DynamicCourses() {
   }, []);
 
   const filteredCourses =
-    courses.filter((course) => {
+    [...courses]
+      .filter((course) => {
 
-      const matchesSearch =
-        course.title
-          .toLowerCase()
-          .includes(
-            search.toLowerCase()
+        const matchesSearch =
+          course.title
+            .toLowerCase()
+            .includes(
+              search.toLowerCase()
+            );
+
+        const matchesLevel =
+          level === "All"
+            ? true
+            : course.level === level;
+
+        return (
+          matchesSearch &&
+          matchesLevel
+        );
+      })
+
+      .sort((a, b) => {
+
+        if (sort === "a-z") {
+
+          return a.title.localeCompare(
+            b.title
           );
+        }
 
-      const matchesLevel =
-        level === "All"
-          ? true
-          : course.level === level;
+        if (sort === "z-a") {
 
-      return (
-        matchesSearch &&
-        matchesLevel
-      );
-    });
+          return b.title.localeCompare(
+            a.title
+          );
+        }
+
+        return 0;
+      });
 
   return (
     <section
@@ -123,9 +146,10 @@ export default function DynamicCourses() {
 
         </div>
 
-        {/* Search + Filter */}
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
+        {/* Filters */}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
 
+          {/* Search */}
           <input
             type="text"
             placeholder="Search courses..."
@@ -138,6 +162,7 @@ export default function DynamicCourses() {
             className="bg-slate-950 border border-slate-700 focus:border-blue-500 transition rounded-2xl p-5 text-white outline-none"
           />
 
+          {/* Level */}
           <select
             value={level}
             onChange={(e) =>
@@ -162,6 +187,31 @@ export default function DynamicCourses() {
 
             <option value="Advanced">
               Advanced
+            </option>
+
+          </select>
+
+          {/* Sort */}
+          <select
+            value={sort}
+            onChange={(e) =>
+              setSort(
+                e.target.value
+              )
+            }
+            className="bg-slate-950 border border-slate-700 focus:border-blue-500 transition rounded-2xl p-5 text-white outline-none"
+          >
+
+            <option value="default">
+              Sort Courses
+            </option>
+
+            <option value="a-z">
+              A → Z
+            </option>
+
+            <option value="z-a">
+              Z → A
             </option>
 
           </select>
