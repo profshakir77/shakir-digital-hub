@@ -2,32 +2,38 @@ export default function Testimonials() {
 
   const testimonials = [
     {
-      name: "Ali Raza",
-      role: "Freelancer",
-
+      name: "Ali Hassan",
+      role: "Frontend Developer",
       message:
-        "Amazing platform for learning freelancing and website development. Highly recommended!",
+        "Shakir Digital Hub completely changed my career. I learned web development and started freelancing internationally.",
+
+      image:
+        "https://randomuser.me/api/portraits/men/32.jpg",
     },
 
     {
-      name: "Fatima Noor",
+      name: "Ayesha Khan",
       role: "Graphic Designer",
-
       message:
-        "Professional instructors and practical training helped me start earning online.",
+        "The graphic designing course was extremely practical and professional. Highly recommended for beginners.",
+
+      image:
+        "https://randomuser.me/api/portraits/women/44.jpg",
     },
 
     {
-      name: "Ahmed Khan",
-      role: "Web Developer",
-
+      name: "Usman Tariq",
+      role: "Digital Marketer",
       message:
-        "Best online digital skills platform with modern courses and excellent support.",
+        "I learned SEO and digital marketing from Shakir Digital Hub and now work with international clients.",
+
+      image:
+        "https://randomuser.me/api/portraits/men/75.jpg",
     },
   ];
 
   return (
-    <section className="py-28 bg-slate-900 text-white relative overflow-hidden">
+    <section className="py-28 bg-black text-white relative overflow-hidden">
 
       {/* Glow Effects */}
       <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-blue-500/10 blur-[100px] rounded-full"></div>
@@ -36,6 +42,7 @@ export default function Testimonials() {
 
       <div className="container-custom relative z-10">
 
+        {/* Heading */}
         <div className="text-center mb-20">
 
           <span className="bg-blue-500/20 text-blue-400 px-5 py-2 rounded-full text-sm">
@@ -51,52 +58,66 @@ export default function Testimonials() {
 
           </h2>
 
-          <p className="text-slate-400 text-xl max-w-3xl mx-auto leading-8">
+          <p className="text-slate-400 text-xl leading-8 max-w-3xl mx-auto">
+
             Thousands of students are building successful digital careers with Shakir Digital Hub.
+
           </p>
 
         </div>
 
+        {/* Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-          {testimonials.map((item, index) => (
+          {testimonials.map(
+            (item, index) => (
 
-            <div
-              key={index}
-              className="glass-effect hover:border-blue-500 hover:-translate-y-3 transition duration-300 rounded-[32px] p-10"
-            >
+              <div
+                key={index}
+                className="glass-effect hover:border-blue-500 hover:-translate-y-3 transition duration-300 rounded-[32px] p-10"
+              >
 
-              <div className="flex items-center gap-2 mb-6 text-yellow-400 text-2xl">
-                ⭐ ⭐ ⭐ ⭐ ⭐
-              </div>
+                {/* User */}
+                <div className="flex items-center gap-5 mb-8">
 
-              <p className="text-slate-300 leading-8 mb-10">
-                {item.message}
-              </p>
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-20 h-20 rounded-full object-cover border-4 border-blue-500"
+                  />
 
-              <div className="flex items-center gap-4">
+                  <div>
 
-                <div className="w-14 h-14 rounded-full bg-blue-500 flex items-center justify-center text-xl font-black">
-                  {item.name.charAt(0)}
-                </div>
+                    <h3 className="text-2xl font-black">
+                      {item.name}
+                    </h3>
 
-                <div>
+                    <p className="text-blue-400">
+                      {item.role}
+                    </p>
 
-                  <h3 className="text-2xl font-black gradient-text">
-                    {item.name}
-                  </h3>
-
-                  <p className="text-slate-400 mt-1">
-                    {item.role}
-                  </p>
+                  </div>
 
                 </div>
 
+                {/* Stars */}
+                <div className="flex gap-1 text-2xl mb-6">
+
+                  ⭐ ⭐ ⭐ ⭐ ⭐
+
+                </div>
+
+                {/* Message */}
+                <p className="text-slate-400 leading-8 text-lg">
+
+                  "{item.message}"
+
+                </p>
+
               </div>
 
-            </div>
-
-          ))}
+            )
+          )}
 
         </div>
 

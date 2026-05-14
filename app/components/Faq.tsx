@@ -4,61 +4,73 @@ import { useState } from "react";
 
 export default function Faq() {
 
-  const faqs = [
-    {
-      question:
-        "Are classes online or physical?",
-
-      answer:
-        "All courses are conducted online so students worldwide can learn from anywhere.",
-    },
-
-    {
-      question:
-        "Do you provide freelancing guidance?",
-
-      answer:
-        "Yes, we provide complete freelancing guidance including Fiverr, Upwork, and client hunting strategies.",
-    },
-
-    {
-      question:
-        "Will I receive certificates?",
-
-      answer:
-        "Yes, students receive certificates after successfully completing courses.",
-    },
-
-    {
-      question:
-        "Can beginners join these courses?",
-
-      answer:
-        "Absolutely. Our courses are beginner-friendly and designed for all skill levels.",
-    },
-
-    {
-      question:
-        "Do you provide recordings of classes?",
-
-      answer:
-        "Yes, class recordings and learning materials are provided for better learning experience.",
-    },
-  ];
-
   const [openIndex, setOpenIndex] =
     useState<number | null>(0);
 
+  const faqs = [
+    {
+      question:
+        "Are the courses completely online?",
+
+      answer:
+        "Yes, all courses are fully online and accessible from anywhere in the world.",
+    },
+
+    {
+      question:
+        "Do I need prior experience?",
+
+      answer:
+        "No. Our beginner-friendly courses are designed for students with zero experience.",
+    },
+
+    {
+      question:
+        "Will I get freelancing guidance?",
+
+      answer:
+        "Yes, we provide freelancing guidance, Fiverr tips, Upwork strategies, and client hunting methods.",
+    },
+
+    {
+      question:
+        "How do I enroll in a course?",
+
+      answer:
+        "You can enroll directly using the enrollment form or contact us on WhatsApp.",
+    },
+
+    {
+      question:
+        "Do you provide certificates?",
+
+      answer:
+        "Yes, certificates can be provided after successful course completion.",
+    },
+  ];
+
+  const toggleFaq = (
+    index: number
+  ) => {
+
+    setOpenIndex(
+      openIndex === index
+        ? null
+        : index
+    );
+  };
+
   return (
-    <section className="py-28 bg-black text-white relative overflow-hidden">
+    <section className="py-28 bg-slate-900 text-white relative overflow-hidden">
 
       {/* Glow Effects */}
       <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-blue-500/10 blur-[100px] rounded-full"></div>
 
       <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-cyan-500/10 blur-[100px] rounded-full"></div>
 
-      <div className="container-custom max-w-5xl relative z-10">
+      <div className="container-custom relative z-10">
 
+        {/* Heading */}
         <div className="text-center mb-20">
 
           <span className="bg-blue-500/20 text-blue-400 px-5 py-2 rounded-full text-sm">
@@ -74,47 +86,52 @@ export default function Faq() {
 
           </h2>
 
-          <p className="text-slate-400 text-xl leading-8">
-            Everything you need to know about our online courses and services.
+          <p className="text-slate-400 text-xl leading-8 max-w-3xl mx-auto">
+
+            Everything you need to know about our online IT courses and digital services.
+
           </p>
 
         </div>
 
-        <div className="space-y-6">
+        {/* FAQ List */}
+        <div className="max-w-5xl mx-auto space-y-6">
 
-          {faqs.map((item, index) => (
+          {faqs.map((faq, index) => (
 
             <div
               key={index}
-              className="glass-effect rounded-[28px] overflow-hidden hover:border-blue-500 transition duration-300"
+              className="glass-effect rounded-[32px] overflow-hidden"
             >
 
+              {/* Question */}
               <button
                 onClick={() =>
-                  setOpenIndex(
-                    openIndex === index
-                      ? null
-                      : index
-                  )
+                  toggleFaq(index)
                 }
-                className="w-full flex items-center justify-between text-left p-8 text-xl font-bold"
+                className="w-full flex items-center justify-between p-8 text-left"
               >
 
-                {item.question}
+                <h3 className="text-2xl font-bold">
+                  {faq.question}
+                </h3>
 
-                <span className="text-3xl gradient-text">
+                <span className="text-4xl text-blue-400">
+
                   {openIndex === index
                     ? "−"
                     : "+"}
+
                 </span>
 
               </button>
 
+              {/* Answer */}
               {openIndex === index && (
 
                 <div className="px-8 pb-8 text-slate-400 leading-8 text-lg">
 
-                  {item.answer}
+                  {faq.answer}
 
                 </div>
 

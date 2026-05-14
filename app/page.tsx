@@ -5,10 +5,13 @@ import Hero from "./components/Hero";
 import Stats from "./components/Stats";
 
 import About from "./components/About";
+import CourseCategories from "./components/CourseCategories";
 
 import DynamicCourses from "./components/DynamicCourses";
 
 import Testimonials from "./components/Testimonials";
+import TechStack from "./components/TechStack";
+import Brands from "./components/Brands";
 
 import CTA from "./components/CTA";
 
@@ -22,6 +25,9 @@ import Whatsapp from "./components/Whatsapp";
 
 import Footer from "./components/Footer";
 
+import Newsletter from "./components/Newsletter";
+import Process from "./components/Process";
+
 export default function HomePage() {
   return (
     <main className="bg-slate-950 text-white overflow-hidden">
@@ -29,13 +35,15 @@ export default function HomePage() {
       <Navbar />
 
       <Hero />
-
+      <Brands />
       <Stats />
 
       <About />
 
       <DynamicCourses />
-
+      <Process />
+      <TechStack />
+      <CourseCategories />
       <Testimonials />
 
       <CTA />
@@ -43,6 +51,7 @@ export default function HomePage() {
       <Faq />
 
       <EnrollmentForm />
+      <Newsletter />
 
       <Contact />
 
